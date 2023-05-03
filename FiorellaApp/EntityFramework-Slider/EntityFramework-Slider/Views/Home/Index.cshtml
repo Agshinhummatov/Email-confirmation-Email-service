@@ -1,0 +1,187 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "Home";
+}
+
+    <!-- MAIN START -->
+   
+    <main>
+
+        <!-- SLIDER START -->
+
+        @await Component.InvokeAsync("Slider");
+
+        <!-- SLIDER END -->
+
+        <!-- PRODUCTS START -->
+
+        <section id="products">
+            <div class="container">
+                <div class="row pt-5">
+                    <div class="col-12 d-flex justify-content-between">
+                        <ul class="category-mobile d-md-none list-unstyled">
+                            <li>
+                                <a href="" class="categories mr-2">Categories</a>
+                                <i class="fas fa-caret-down"></i>
+                                <ul class="category list-unstyled" style="display: none;">
+                                    <li><a href="" data-id="all">All</a></li>
+                                    <li><a href="" data-id="popular">Popular</a></li>
+                                    <li><a href="" data-id="winter">Winter</a></li>
+                                    <li><a href="" data-id="various">Various</a></li>
+                                    <li><a href="" data-id="exotic">Exotic</a></li>
+                                    <li><a href="" data-id="green">Greens</a></li>
+                                    <li><a href="" data-id="cactuse">Cactuses</a></li>
+                                </ul>
+                            </li>
+                        </ul> 
+                        <ul class="category d-none d-md-flex list-unstyled">
+                            <li><a href="" data-id="all">All</a></li>
+                             @foreach (var category in Model.Categories)
+                             {
+                                  <li><a href="" data-id="@category.Id"> @Html.Raw(category.Name) </a></li>
+                             }       
+                            
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="" class="mr-2">Filter</a>
+                                <i class="fas fa-caret-down"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                      <partial name="_ProductsPartial" model="@Model.Products"/>
+                
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS END -->
+
+        <!-- ABOUT START -->
+
+        <section id="about">
+            <div class="container py-5">
+                <div class="row py-5">
+                    <div class="col-lg-6">
+                        <div class="img">
+                            <img src="~/img/@Model.Abouts.Image" class="img-fluid" alt="">
+                            <div
+                                class="player position-absolute rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="fas fa-play fa-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-text mt-5 mt-lg-0 px-lg-5">
+                            @Html.Raw(Model.Abouts.Header)
+                            <p class="py-3">@Model.Abouts.Description</p>
+                            <ul class="list-unstyled">
+                                @foreach (var adventage in Model.Abouts.Adventages)
+                            {
+                                 <li class="mt-3"><img src="~/img/@adventage.Icon" class="mr-2" alt=""> @adventage.Description </li class="mt-3">
+                            }
+                               
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT END -->
+
+        <!-- EXPERTS START -->
+
+      @await Component.InvokeAsync("Expert");
+
+        <!-- EXPERTS END -->
+
+        <!-- SUBSCRIBE START -->
+
+        <section id="subscribe" style=" background: url('../img/h3-background-img.jpg')">
+            <div class="container py-5">
+                <div class="row py-5">
+                    <div class="col-12">
+                        <div class="content text-center py-5">
+                            <h3>@Model.Subscribe.Title</h3>
+                            <div class="form-group d-flex justify-content-center flex-wrap mt-5" >
+                                <input type="email" placeholder="Email Address" class="form-control-lg rounded-0">
+                                <button class="btn btn-danger btn-lg rounded-0 px-5 mt-3 mt-sm-0">Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUBSCRIBE END -->
+
+        <!-- BLOG START -->
+
+            @await Component.InvokeAsync("Blog")   @*componenti chagiririq*@
+
+        <!-- BLOG END -->
+
+        <!-- SAY START -->
+
+        <section id="say">
+            <div class="container">
+                
+                    <div class="row py-5 justify-content-center">
+                   
+                      <div class="col-md-8 col-xl-6">
+                        <div class="owl-carousel say">
+                             @foreach (var say in Model.Says)
+                            {
+                               <div>
+                                 <div class="item text-center">
+                                    <div class="img d-flex justify-content-center">
+                                        <img src="~/img/@say.Image" alt="">
+                                    </div>
+                                    <div class="text text-muted pt-3 pb-5">
+                                        <i>@say.Description</i>
+                                    </div>
+                                    <div class="author">
+                                        <h6>@say.Name</h6>
+                                        <p class="text-black-50">@say.Position</p>
+                                    </div>
+                                 </div>
+                               </div>
+                            }
+
+                        </div>
+                      </div>
+                   
+                    </div>
+
+            </div>
+        </section>
+
+        <!-- SAY END -->
+
+        <!-- INSTAGRAM START -->
+
+        <section id="instagram">
+            <div class="owl-carousel instagram">
+                @foreach (var instagram in Model.Instagrams)
+                {
+                     <div><img src="~/img/@instagram.Image" class="img-fluid" alt=""></div>
+                
+                }
+            </div>
+            <div class="hastag bg-light text-muted py-2 px-3">
+                #FIORELLO
+            </div>
+        </section>
+
+        <!-- INSTAGRAM END -->
+
+    </main>
+
+    <!-- MAIN END -->
+
+
+   

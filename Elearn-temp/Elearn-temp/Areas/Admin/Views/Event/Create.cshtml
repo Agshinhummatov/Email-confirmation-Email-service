@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container my-5">
+
+
+    <form>
+
+   
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"> Add Event Title</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Text">
+      </div>
+
+    
+
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"> Add Event Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"> Add Event Date</label>
+        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="date">
+      </div>
+
+    
+       
+
+
+        <div class="buttons my-3">
+
+            <button type="submit" class="btn  btn-primary mr-2 ">Submit</button>
+            <a class="btn btn-info" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+
+
+</div>
+

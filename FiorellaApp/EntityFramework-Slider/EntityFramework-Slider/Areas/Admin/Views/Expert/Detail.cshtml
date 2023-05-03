@@ -1,0 +1,30 @@
+﻿@model Experts
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container my-5">
+
+
+    <h2 style="color:darkcyan; text-align:center;" class="mt-3"> Expert detail</h2>
+
+    <h4 style="color:darkred" class="mt-3">Image</h4>
+    <div class="slider-content">
+        <img src="~/img/@Model.Image" style="width:150px; height:150px;" />
+    </div>
+
+    <h4 style="color:darkred" class="mt-3">Header</h4>
+
+    <input type="text" class="form-control" id="customFile" asp-for="Name" disabled="disabled" />
+
+    <h4 style="color:darkred" class="mt-3">Description</h4>
+
+    <input type="text" class="form-control" id="customFile" asp-for="Position" disabled="disabled" />
+
+ 
+    <a class="btn btn-info mt-5" asp-action="Index">Back</a>
+
+
+</div>
+

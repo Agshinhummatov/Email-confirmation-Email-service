@@ -1,0 +1,27 @@
+﻿@model SliderInfo
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container my-5">
+
+    <h2 style="color:darkcyan; text-align:center;" class="mt-3"> Slider info detail </h2>
+
+    <h4 style="color:darkred" class="mt-3">Image</h4>
+    <div class="slider-content">
+        <img src="~/img/@Model.SignatureImage" />
+    </div>
+
+    <h4 style="color:darkred" class="mt-3">Title</h4>
+     @Html.Raw(Model.Title) 
+
+    <h4 style="color:darkred" class="mt-3">Description</h4>
+    <input type="text" class="form-control" id="customFile" asp-for="Description" disabled="disabled" />
+
+
+    <a class="btn btn-info mt-5" asp-action="Index">Back</a>
+
+</div>
+
+

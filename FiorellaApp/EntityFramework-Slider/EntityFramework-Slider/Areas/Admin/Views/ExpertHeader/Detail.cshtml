@@ -1,0 +1,20 @@
+﻿@model ExpertsHeader
+
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container my-5">
+  
+
+
+        <input type="text" class="form-control" id="customFile" asp-for="Title" disabled="disabled" /> @* name bura gelir tutaqki basaq inputlar oldu onda gelib asaqidan yaziram eynisini asp-for icini deyisirem*@
+        <input type="text" class="form-control" id="customFile" asp-for="Description" disabled="disabled" />
+
+            <a class="btn btn-primary mt-3" asp-action="Index">Cancel</a>
+   
+
+   
+</div>
+

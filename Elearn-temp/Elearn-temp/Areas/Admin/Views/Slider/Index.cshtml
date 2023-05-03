@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Slider>
+
+
+@{
+    ViewData["Title"] = "Slider";
+}
+
+
+<div style="padding-left:300px" class="container">
+
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <h4 class="card-title text-center" style="margin-top:10px">Slider</h4>
+        <div class="table-responsive text-nowrap">
+            <a class="btn btn-success text-white" asp-action="Create" style="float:right;">Create</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+
+                    @foreach (var slider in Model)
+                    {
+                        <tr>
+                            <td class="py-1">
+
+
+                                <img src="~/images/@slider.Image" style="width:70px;height:70px;" alt=" image" />
+
+
+
+                            </td>
+
+                            <td>
+
+                                <div class="_title">
+
+                                    @slider.Title
+
+                                </div>
+
+                            </td>
+                            <td>
+                                @if (slider.SoftDelete)
+                                {
+                                    <div class="deActive-status"></div>
+                                }
+                                else
+                                {
+                                    <div class="active-status"></div>
+                                }
+
+
+
+
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-info" asp-action="Detail" asp-route-id="@slider.Id">Info</a>
+                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@slider.Id">Edit</a>
+                                <a class="btn btn-outline-danger">Delete</a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+
+</div>
+

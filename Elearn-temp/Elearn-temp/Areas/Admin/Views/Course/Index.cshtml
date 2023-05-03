@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Course>
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div style="padding-left:300px" class="container">
+
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <h4 class="card-title text-center" style="margin-top:10px">Course</h4>
+        <div class="table-responsive text-nowrap">
+            <a class="btn btn-success text-white" asp-action="Create" style="float:right;">Create</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="py-1">
+
+
+                              
+                                <img src="~/images/@item.CourseImages.FirstOrDefault(m=>m.IsMain)?.Image" style="width:70px;height:70px;" alt=" image" / />
+
+
+
+                            </td>
+
+                            <td>
+
+                                <div class="_title">
+
+                                    @item.Name
+
+                                </div>
+
+                            </td>
+                            <td>
+
+
+                                @if (item.SoftDelete)
+                                {
+                                    <div class="deActive-status"></div>
+                                }
+                                else
+                                {
+                                    <div class="active-status"></div>
+                                }
+
+
+
+
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-info" asp-action="Detail" asp-route-id="@item.Id">Info</a>
+                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                 <form style="display: inline-block;" asp-action="Delete" asp-route-id="@item.Id" method="post">
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+
+</div>

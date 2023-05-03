@@ -1,0 +1,28 @@
+﻿@model ExpertsHeader
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<div class="container my-5">
+    <span class="text-danger">@ViewBag.error</span>
+    <form class="form-sample" asp-action="Edit" method="post">
+
+        <input type="text" class="form-control" id="customFile" asp-for="Title" />   @*Bu name Category nin ichinde olan name propertisidi eger inputum cox olacaqsa gelib asaqidan birini acib onuda yazacam tutaki title  asp-for="Title"  olacaq *@
+        <input type="text" class="form-control" id="customFile" asp-for="Description" />
+
+
+        <span class="text-danger" asp-validation-for="Title"></span>
+        <span class="text-danger" asp-validation-for="Description"></span>
+       
+        @*span name e ne validation elesek gelib onu spanin ichinde yazdiracaq*@
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+
+    </form>
+</div>
+

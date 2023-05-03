@@ -1,0 +1,63 @@
+﻿@model CourseEditVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div style="padding-left:170px" class="container my-5">
+    <div class="product-images d-flex ">
+        @foreach (var item in Model.Images)
+        {
+            <div class="trash-icon" data-id="@item.Id">
+                <img style="width:150px; height:150px;" src="~/images/@item.Image" />
+                <i style="font-size:22px;color:red;cursor:pointer;" class="mdi mdi-delete"></i>
+            </div>
+            
+        }
+
+    </div>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="my-2">Name</label>
+            <input class="form-control " id="customFile" asp-for="Name" />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label class="my-2">Description</label>
+            <textarea class="form-control" id="description-text" asp-for="Description" rows="5"></textarea>
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
+        <div class="form-group">
+            <label class="my-2">Price</label>
+            <input type="number" step=".01" class="form-control" id="customFile" asp-for="Price" />
+            <span class="text-danger" asp-validation-for="Price"></span>
+        </div>
+        <div class="form-group">
+            <label class="my-2">Count Sale</label>
+            <input class="form-control" id="customFile" asp-for="CountSale" />
+            <span class="text-danger" asp-validation-for="CountSale"></span>
+        </div>
+        <div class="form-group">
+            <label class="my-2">Author</label>
+            <select class="form-control" id="customFile" asp-for="AuthorId" asp-items="@ViewBag.authories"></select>
+        </div>
+        <div class="form-group">
+            <label class="my-2">Images</label>
+            <input class="form-control" id="customFile" asp-for="Photos" />
+        </div>
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("description-text");
+    </script>
+}
+

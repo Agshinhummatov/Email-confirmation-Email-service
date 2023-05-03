@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SliderInfo>
+@{
+    ViewData["Title"] = "Slider";
+}
+
+
+<div class="container my-5">
+    <a class="btn btn-success" style="float: right;" asp-action="Create">Create</a>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Operations
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sliderInfo in Model)
+                {
+                    <tr>
+                        <td class="py-1">
+                            <img src="~/img/@sliderInfo.SignatureImage" style="width: 70px; height: 70px" alt="image" />
+                        </td>
+
+
+                        <td>
+
+                            @Html.Raw(sliderInfo.Title)
+                        </td>
+
+                        <td>
+
+                            <a class="btn btn-outline-info" asp-action="Detail" asp-route-id="@sliderInfo.Id">Info</a>
+                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@sliderInfo.Id">Edit</a>
+                           @* <form style="display: inline-block;" asp-action="Delete" asp-route-id="@sliderInfo.Id" method="post">
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>*@
+
+                            <form style="display:inline-block" id="slider-info-delete-form" data-id="@sliderInfo.Id">
+
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
+
+                        </td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+
